@@ -32,20 +32,21 @@ const NavBar = () => {
                 {/* Logo */}
                 <div className="text-3xl md:text-xl lg:text-2xl  font-bold">
                     <Link href={'#home'}>
-                        <span className="text-blue-500 hidden md:block">Nkosinathi Portfolio</span>
+                        <span className="text-blue-500 hidden md:block">Nkosinathi's Portfolio</span>
                         <span className="text-blue-500 block md:hidden">NS</span>
                     </Link>
                 </div>
 
                 {/* Links */}
-                <div className="space-x-8 text-white text-lg font-semibold hidden md:flex">
+                <div className="space-x-8 text-lg font-semibold hidden md:flex">
+                    <Link href={'#home'}>Home</Link>
                     <Link href={'#about'}>About</Link>
                     <Link href={'#skills'}>Skills</Link>
                     <Link href={'#projects'}>Projects</Link>
                 </div>
 
                 {/* Contacts Button */}
-                <div className="hidden md:block px-4 py-2 text-center text-md cursor-pointer mx-4 bg-gray-500 text-white rounded-md">
+                <div className="hidden md:block px-4 py-2 text-center text-md md:text-lg font-semibold cursor-pointer mx-4 bg-gray-500 hover:bg-gray-600 text-white rounded-md transition duration-500">
                     <Link href={'#contacts'}>Let's Connect</Link>
                 </div>
 
@@ -55,7 +56,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className={`bg-[#2C3E50] opacity-95 text-white w-3/4 h-full flex flex-col  transition-transform duration-500 text-lg fixed top-0 right-0 shadow-lg p-8 pt-4 space-y-8 md:hidden ${openMenu ? 'transform translate-x-0' : 'transform translate-x-fulasl'}`}>
+                <div className={`bg-[#2C3E50] opacity-95 text-white w-3/4 h-full flex flex-col  transition-transform duration-500 text-lg fixed top-0 right-0 shadow-lg p-8 pt-4 space-y-8 md:hidden ${openMenu ? 'transform translate-x-0' : 'transform translate-x-full'}`}>
                     <Link href={'#about'} className="flex justify-between items-center">About
                         <span className="text-white text-xl cursor-pointer" onClick={toggleMenu}>X</span>
                     </Link>

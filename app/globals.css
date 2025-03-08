@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
 body {
-  background-color: #2C3E50;
-  overflow-x: hidden;
+  background-color: #101828;
+  /* overflow-x: hidden; */
   height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  background-color: #2C3E50;
+  color: #fff
 }

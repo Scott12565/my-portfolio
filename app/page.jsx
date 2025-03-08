@@ -1,7 +1,13 @@
+import About from "@/sections/About";
+import Hero from "@/sections/Hero";
+import Skills from "@/sections/Skills";
+
 export default function Home() {
   return (
-    <main className="pt-20 h-screen">
-      <div className="home text-white">This is the home page...</div>
+    <main className="pt-16 ">
+      <Hero />
+      <About />
+      <Skills />
     </main>
   )
 }
