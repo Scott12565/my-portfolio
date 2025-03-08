@@ -11,7 +11,7 @@ It showcase my **projects, skills and experience** as a web developer and also s
 
 ## 🔥 Why I Built This Project
 As a web developer i wanted a **Fast, Responsive and Morden** porfolio to:
-- Showcse my **projects** and skills that i have worked on in a sturctured way.
+- Showcase my **projects** and skills that i have worked on in a sturctured way.
 
 ## 🛠 Tech Stack Used (For This Portfolio)
 - **Frontend:** Next.js, Tailwind CSS
