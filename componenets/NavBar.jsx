@@ -16,6 +16,12 @@ const NavBar = () => {
         }
     };
 
+    const handleLinkClick = () => {
+        if (openMenu) {
+            setOpenMenu(false);  // Close the sidebar on mobile when a link is clicked
+        }
+    };
+
     useEffect(() => {
         // Add event listener to close the menu when clicking outside
         window.addEventListener('click', closeMenu);
@@ -39,10 +45,10 @@ const NavBar = () => {
 
                 {/* Links */}
                 <div className="space-x-8 text-lg font-semibold hidden md:flex">
-                    <Link href={'#home'}>Home</Link>
-                    <Link href={'#about'}>About</Link>
-                    <Link href={'#skills'}>Skills</Link>
-                    <Link href={'#projects'}>Projects</Link>
+                    <Link href={'#home'}onClick={handleLinkClick}>Home</Link>
+                    <Link href={'#about'}onClick={handleLinkClick}>About</Link>
+                    <Link href={'#skills'}onClick={handleLinkClick}>Skills</Link>
+                    <Link href={'#projects'}onClick={handleLinkClick}>Projects</Link>
                 </div>
 
                 {/* Contacts Button */}
@@ -60,9 +66,9 @@ const NavBar = () => {
                     <Link href={'#about'} className="flex justify-between items-center">About
                         <span className="text-white text-xl cursor-pointer" onClick={toggleMenu}>X</span>
                     </Link>
-                    <Link href={'#skills'}>Skills</Link>
-                    <Link href={'#projects'}>Projects</Link>
-                    <Link href={'#contacts'}>Contacts</Link>
+                    <Link href={'#skills'}onClick={handleLinkClick}>Skills</Link>
+                    <Link href={'#projects'}onClick={handleLinkClick}>Projects</Link>
+                    <Link href={'#contacts'}onClick={handleLinkClick}>Contacts</Link>
                 </div>
             </div>
         </nav>

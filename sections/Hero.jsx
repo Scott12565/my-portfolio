@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const Hero = () => {
     return (
-      <section className=" h-screen flex flex-col justify-center items-center text-gray-100 text-center my-0 px-7">
-        <h1 className="hero-title text-4xl md:text-6xl mb-6 font-bold">
+      <section id="home" className=" h-screen flex flex-col justify-center items-center text-gray-100 text-center my-0 px-3.5 md:px-7">
+        <h1 className="hero-title text-2xl md:text-4xl lg:text-6xl mb-3 md:mb-6 font-bold px-3">
             Hi, I'm Nkosinathi Silinda
           </h1>
-          <p className="text-lg md:text-xl mb-8">
+          <p className="text-lg md:text-xl mb-4 md:mb-8">
           A passionate web developer skilled in HTML5, CSS, Javascript, Bootstarp, Tailwind CSS, <br /> 
           React, Next.js, Firebase, Express.js, Socket.io and MongoDB for building fast, interative and scalable web applications.
           </p>
