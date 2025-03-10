@@ -1,13 +1,100 @@
 @import "tailwindcss";
 
-body {
-  background-color: #101828;
-  /* overflow-x: hidden; */
-  height: 100vh;
+html {
   scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #2C3E50, #101828);
+  background-size: 200% 200%; /* Ensure the gradient can move */
+  animation: gradientAnimation 8s ease infinite; /* Apply the gradient animation */
+  color: white; /* Ensures text remains readable */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .navbar {
   background-color: #2C3E50;
-  color: #fff
+  color: #fff;
+}
+
+/* Keyframes for typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Keyframes for blinking cursor effect */
+@keyframes blink {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+/* Hero title animation with the cursor */
+.hero-title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid white; /* Create the cursor effect */
+  animation: typing 4s steps(20, end) infinite alternate, blink 0.7s infinite step-end;
+  width: auto; /* Keeps the width limited to the content */
+  white-space: nowrap; /* Ensures text stays in one line */
+}
+
+/* Optional: Make the title float up and down slightly for a more dynamic effect */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.hero-button {
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+.hero-button {
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+.hero-button {
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

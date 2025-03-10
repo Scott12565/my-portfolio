@@ -1,4 +1,3 @@
-// Skills.js or within your main page
 export default function Skills() {
     return (
       <section className="py-8 px-7 md:py-12 text-gray-100">
@@ -59,6 +58,8 @@ export default function Skills() {
                     <div className="flex justify-center items-center bg-gray-800 p-4 rounded-lg">
                         <span>NEXT.JS</span>
                     </div>
+
+                    {/* other */}
                 </div>
             </div>
         </div>
