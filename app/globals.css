@@ -5,18 +5,13 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #455c79, #101828);
-  background-size: 400% 400%; /* Ensure the gradient can move */
-  animation: gradientAnimation 8s ease infinite; 
+  background: linear-gradient(135deg, #416795, #101828);
+  background-size: 600% 600%; /* Ensure the gradient can move */
+  animation: gradientAnimation 8s ease-in-out infinite; 
   color: white; /* Ensures text remains readable */
   margin: 0;
   padding: 0;
   min-height: 100vh;
-}
-
-.navbar {
-  background-color: #2C3E50;
-  color: #fff;
 }
 
 @keyframes gradientAnimation {
@@ -25,7 +20,10 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-
+.navbar {
+  background-color: #2C3E50;
+  color: #fff;
+}
 
 /* Keyframes for typing effect */
 @keyframes typing {
@@ -68,21 +66,8 @@ body {
   border-right: 3px solid white; 
   animation: typing 4s steps(20, end) forwards, deleting 4s steps(20, end) infinite alternate, blink 0.7s infinite step-end; 
   width: 50%; 
-  word-wrap:normal
+  word-wrap:normal;
 }
-
-/* Make the title float up and down slightly for a more dynamic effect */
-/* @keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-} */
 
 .hero-button {
   display: inline-block;
@@ -98,5 +83,12 @@ body {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: 800% 800%;
+    animation: gradientAnimation 8s ease-in-out infinite;
   }
 }
