@@ -7,16 +7,38 @@ export default function Contact() {
     name: "",
     email: "",
     message: "",
-  });
+  }); // form data
+  const [status, setStatus] = useState('') // set success message
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    window.location.href = `mailto:nkosinathinkosi153@gmail.com?subject=Contact from ${formData.name}&body=${formData.message}`;
-  };
+    
+    try {
+      const respond = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(formData)
+      })
+      const data = await respond.json()
+      console.log(data)
+
+      if(data.success){
+        setStatus('Message sent succeful')
+        console.log(formData.name, formData.email, formData.message)
+        setFormData({name: '', email: '', message: ""})
+      } else {
+        setStatus('Failed to send a message')
+      }
+
+    } catch (error) {
+      setStatus('Something went wrong! please try again.')
+      console.log(error.message)
+    }
+  }
 
   return (
     <section id="contact" className="mb-24 py-8 px-7 md:py-12 text-gray-100">
@@ -32,8 +54,9 @@ export default function Contact() {
             name="name"
             placeholder="Your Name"
             required
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={handleChange}
+            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            
           />
 
           <input
@@ -41,8 +64,9 @@ export default function Contact() {
             name="email"
             placeholder="Your Email"
             required
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={handleChange}
+            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            
           />
 
           <textarea
@@ -50,8 +74,9 @@ export default function Contact() {
             placeholder="Your Message"
             rows="5"
             required
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={handleChange}
+            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            
           ></textarea>
 
           <button
@@ -71,4 +96,4 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+  }
