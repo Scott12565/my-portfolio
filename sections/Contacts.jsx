@@ -8,7 +8,7 @@ export default function Contact() {
     email: "",
     message: "",
   }); // form data
-  const [status, setStatus] = useState('') // set success message
+  const [status, setStatus] = useState(''); // set success or error message
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,29 +16,46 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
+    console.log('Form Data:', formData); // Log the form data to check if it's populated correctly.
+  
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus('All fields are required');
+      return; // Prevent submission if any field is missing
+    }
+  
     try {
       const respond = await fetch('/api/contact', {
         method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(formData)
-      })
-      const data = await respond.json()
-      console.log(data)
-
-      if(data.success){
-        setStatus('Message sent succeful')
-        console.log(formData.name, formData.email, formData.message)
-        setFormData({name: '', email: '', message: ""})
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await respond.json();
+      console.log(data);
+  
+      if (data.success) {
+        setStatus('Message sent successfully!');
+        // Clear the form after successful submission
+        setFormData({ name: '', email: '', message: '' });
       } else {
-        setStatus('Failed to send a message')
+        setStatus('Failed to send the message. Please try again.');
       }
-
+  
+      // Set a timer to clear the status after 3 seconds
+      setTimeout(() => {
+        setStatus('');
+      }, 3000);
+  
     } catch (error) {
-      setStatus('Something went wrong! please try again.')
-      console.log(error.message)
+      setStatus('Something went wrong! Please try again.');
+      console.log(error.message);
+  
+      // Set a timer to clear the status after 3 seconds
+      setTimeout(() => {
+        setStatus('');
+      }, 3000);
     }
-  }
+  };
 
   return (
     <section id="contact" className="mb-24 py-8 px-7 md:py-12 text-gray-100">
@@ -54,9 +71,9 @@ export default function Contact() {
             name="name"
             placeholder="Your Name"
             required
+            value={formData.name} // bind formData to value
             onChange={handleChange}
             className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            
           />
 
           <input
@@ -64,9 +81,9 @@ export default function Contact() {
             name="email"
             placeholder="Your Email"
             required
+            value={formData.email} // bind formData to value
             onChange={handleChange}
             className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            
           />
 
           <textarea
@@ -74,9 +91,9 @@ export default function Contact() {
             placeholder="Your Message"
             rows="5"
             required
+            value={formData.message} // bind formData to value
             onChange={handleChange}
             className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            
           ></textarea>
 
           <button
@@ -87,6 +104,13 @@ export default function Contact() {
           </button>
         </form>
 
+        {/* Display status message */}
+        {status && (
+          <div className="mt-4 text-lg font-semibold text-gray-300">
+            {status}
+          </div>
+        )}
+
         {/* Social Links */}
         <div className="flex justify-center gap-6 mt-8">
           <Link href="https://github.com/Scott12565" target="_blank" className="text-blue-400 hover:text-blue-500 transition duration-200">GitHub</Link>
@@ -96,4 +120,4 @@ export default function Contact() {
       </div>
     </section>
   );
-  }
+}
